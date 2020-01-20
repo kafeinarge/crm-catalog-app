@@ -23,5 +23,4 @@ public class DetailSoapFaultDefinitionExceptionResolver extends SoapFaultMapping
             detail.addFaultDetailElement(MESSAGE).addText(responseMessage.getMessage());
         }
     }
-
 }

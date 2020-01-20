@@ -38,8 +38,7 @@ public class CatalogService {
         GetAllCatalogResponse getAllCatalogResponse = new GetAllCatalogResponse();
         List<Catalog> catalogList = new ArrayList<>();
         try {
-            //catalogList = (List<Catalog>) catalogRepository.findAll();
-            catalogRepository.deleteById(18L);
+            catalogList = (List<Catalog>) catalogRepository.findAll();
         } catch (DataAccessException e){
             responseMessage.setMessage(e.getMessage());
             responseMessage.setStatusCode(ErrorType.SERVICE_ERROR.getResultCode());
