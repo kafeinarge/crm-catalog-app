@@ -1,10 +1,11 @@
 package com.turkcell.crm.catalog.service;
 
-import com.turkcell.crm.catalog.enums.ErrorType;
 import com.turkcell.crm.catalog.entity.Catalog;
+import com.turkcell.crm.catalog.enums.ErrorType;
 import com.turkcell.crm.catalog.exception.ServiceFaultException;
 import com.turkcell.crm.catalog.mapper.CatalogMapper;
 import com.turkcell.crm.catalog.repository.ICatalogRepository;
+import com.turkcell.crm.catalog.service.base.CatalogService;
 import com.turkcell.crm.catalog.soap.GetAllCatalogResponse;
 import com.turkcell.crm.catalog.soap.ResponseMessage;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class CatalogService {
+public class CatalogServiceImpl implements CatalogService {
 
     @Autowired
     private ICatalogRepository catalogRepository;
@@ -29,11 +30,9 @@ public class CatalogService {
      * @return GetAllCatalogResponse
      */
     @Cacheable("catalog")
-    public GetAllCatalogResponse getCatalogs() throws  ServiceFaultException{
+    public GetAllCatalogResponse getCatalogs(){
 
         ResponseMessage responseMessage= new ResponseMessage();
-        //responseMessage.setMessage("Catalogs cannot be retrieved");
-        //responseMessage.setStatusCode(ErrorType.SERVICE_ERROR.getResultCode());
 
         GetAllCatalogResponse getAllCatalogResponse = new GetAllCatalogResponse();
         List<Catalog> catalogList = new ArrayList<>();
