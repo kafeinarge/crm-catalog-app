@@ -1,0 +1,38 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://www.turkcell.com/crm/catalog/soap"
+           targetNamespace="http://www.turkcell.com/crm/catalog/soap" elementFormDefault="qualified">
+
+    <xs:element name="getAllCatalogRequest">
+        <xs:complexType>
+            <xs:sequence>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getAllCatalogResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="catalogResponse" type="tns:catalogResponse" maxOccurs="unbounded"/>
+                <xs:element name="responseMessage" type="tns:responseMessage"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:complexType name="catalogResponse">
+    <xs:sequence>
+        <xs:element name="id" type="xs:long"/>
+        <xs:element name="name" type="xs:string"/>
+        <xs:element name="speed" type="xs:int"/>
+        <xs:element name="price" type="xs:decimal"/>
+        <xs:element name="currency" type="xs:string"/>
+        <xs:element name="unit" type="xs:string"/>
+    </xs:sequence>
+</xs:complexType>
+
+    <xs:complexType name="responseMessage">
+        <xs:sequence>
+            <xs:element name="statusCode" type="xs:string"/>
+            <xs:element name="message" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+
+</xs:schema>

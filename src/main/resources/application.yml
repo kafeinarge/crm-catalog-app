@@ -1,0 +1,16 @@
+spring:
+  datasource:
+    platform: mysql
+    url: jdbc:mysql://localhost:3306/crm_catalog?useUnicode=true&useLegacyDatetimeCode=false&serverTimezone=Turkey
+    username: root
+    password: root
+    hikari:
+      connection-timeout: 3000
+      idle-timeout: 60000
+      max-lifetime: 180000
+      maximum-pool-size: 3
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
