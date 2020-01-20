@@ -83,8 +83,7 @@ public class CatalogServiceImplTest {
         when(catalogMapper.catalogToCatalogResponseSoap(firstCatalog)).thenReturn(firstCatalogResponse);
 
         //then
-        Assert.assertEquals(getAllCatalogResponse.getCatalogResponse(), catalogService.getCatalogs());
-
+        Assert.assertEquals(catalogMapper.catalogListToCatalogListResponseSoap(catalogList,getAllCatalogResponse), catalogService.getCatalogs());
     }
 
 

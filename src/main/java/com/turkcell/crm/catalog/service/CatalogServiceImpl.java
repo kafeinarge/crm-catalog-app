@@ -35,7 +35,7 @@ public class CatalogServiceImpl implements CatalogService {
         ResponseMessage responseMessage= new ResponseMessage();
 
         GetAllCatalogResponse getAllCatalogResponse = new GetAllCatalogResponse();
-        List<Catalog> catalogList = new ArrayList<>();
+        List<Catalog> catalogList;
         try {
             catalogList = (List<Catalog>) catalogRepository.findAll();
         } catch (DataAccessException e){
