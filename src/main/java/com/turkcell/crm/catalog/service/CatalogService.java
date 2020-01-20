@@ -9,6 +9,7 @@ import com.turkcell.crm.catalog.soap.GetAllCatalogResponse;
 import com.turkcell.crm.catalog.soap.ResponseMessage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
+import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -31,14 +32,17 @@ public class CatalogService {
     public GetAllCatalogResponse getCatalogs() throws  ServiceFaultException{
 
         ResponseMessage responseMessage= new ResponseMessage();
-        responseMessage.setMessage("Catalogs cannot be retrieved");
-        responseMessage.setStatusCode(ErrorType.SERVICE_ERROR.getResultCode());
+        //responseMessage.setMessage("Catalogs cannot be retrieved");
+        //responseMessage.setStatusCode(ErrorType.SERVICE_ERROR.getResultCode());
 
         GetAllCatalogResponse getAllCatalogResponse = new GetAllCatalogResponse();
         List<Catalog> catalogList = new ArrayList<>();
         try {
-            catalogList = (List<Catalog>) catalogRepository.findAll();
-        } catch (Exception e){
+            //catalogList = (List<Catalog>) catalogRepository.findAll();
+            catalogRepository.deleteById(18L);
+        } catch (DataAccessException e){
+            responseMessage.setMessage(e.getMessage());
+            responseMessage.setStatusCode(ErrorType.SERVICE_ERROR.getResultCode());
             throw new ServiceFaultException("ERROR", responseMessage);
         }
         return catalogMapper.catalogListToCatalogListResponseSoap(catalogList, getAllCatalogResponse);
