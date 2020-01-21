@@ -15,6 +15,9 @@ import java.math.BigDecimal;
 public class Catalog extends BaseEntity {
 
     @Column(nullable = false)
+    private String code;
+
+    @Column(nullable = false)
     private String name;
 
     @NotNull(message = "Name can not be null!")
