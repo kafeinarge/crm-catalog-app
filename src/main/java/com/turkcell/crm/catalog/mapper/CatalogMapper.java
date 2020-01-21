@@ -15,10 +15,7 @@ public class CatalogMapper {
         CatalogResponse catalogResponse = new CatalogResponse();
         catalogResponse.setId(catalog.getId());
         catalogResponse.setName(catalog.getName());
-        catalogResponse.setSpeed(catalog.getSpeed());
-        catalogResponse.setUnit(catalog.getUnit());
         catalogResponse.setPrice(catalog.getPrice());
-        catalogResponse.setCurrency(catalog.getCurrency());
 
         return catalogResponse;
     }

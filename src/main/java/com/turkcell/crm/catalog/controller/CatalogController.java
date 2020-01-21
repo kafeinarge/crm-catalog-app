@@ -1,7 +1,6 @@
 package com.turkcell.crm.catalog.controller;
 
 import com.turkcell.crm.catalog.service.CatalogServiceImpl;
-import com.turkcell.crm.catalog.service.base.CatalogService;
 import com.turkcell.crm.catalog.soap.GetAllCatalogRequest;
 import com.turkcell.crm.catalog.soap.GetAllCatalogResponse;
 import org.springframework.ws.server.endpoint.annotation.Endpoint;

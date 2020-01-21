@@ -17,7 +17,6 @@ public class CatalogTest {
     public void setUp() {
         catalog = new Catalog();
         catalog.setId(1L);
-        catalog.setName("MAXPRO");
     }
 
     @Test
@@ -43,7 +42,6 @@ public class CatalogTest {
     private Catalog createCatalog() {
         Catalog customer = new Catalog();
         customer.setId(1L);
-        customer.setName("MAXPRO");
         return customer;
     }
 }

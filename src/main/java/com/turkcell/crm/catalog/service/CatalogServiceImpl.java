@@ -10,10 +10,8 @@ import com.turkcell.crm.catalog.soap.GetAllCatalogResponse;
 import com.turkcell.crm.catalog.soap.ResponseMessage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
-import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -33,16 +31,16 @@ public class CatalogServiceImpl implements CatalogService {
     public GetAllCatalogResponse getCatalogs(){
 
         ResponseMessage responseMessage= new ResponseMessage();
+        responseMessage.setMessage("No catalog is found");
+        responseMessage.setStatusCode(ErrorType.SERVICE_NOT_FOUND.getResultCode());
 
         GetAllCatalogResponse getAllCatalogResponse = new GetAllCatalogResponse();
+
         List<Catalog> catalogList;
-        try {
-            catalogList = (List<Catalog>) catalogRepository.findAll();
-        } catch (DataAccessException e){
-            responseMessage.setMessage(e.getMessage());
-            responseMessage.setStatusCode(ErrorType.SERVICE_ERROR.getResultCode());
-            throw new ServiceFaultException("ERROR", responseMessage);
-        }
+            catalogList = catalogRepository.findAllBy()
+                    .orElseThrow(()-> new ServiceFaultException(ErrorType.SERVICE_NOT_FOUND.getResultMessage(), responseMessage));
+
+
         return catalogMapper.catalogListToCatalogListResponseSoap(catalogList, getAllCatalogResponse);
     }
 }

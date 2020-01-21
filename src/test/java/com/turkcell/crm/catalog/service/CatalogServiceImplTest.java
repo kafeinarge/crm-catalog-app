@@ -40,36 +40,18 @@ public class CatalogServiceImplTest {
         Catalog secondCatalog = new Catalog();
 
         firstCatalog.setId(1L);
-        firstCatalog.setName("HIZLI");
-        firstCatalog.setSpeed(100);
-        firstCatalog.setUnit("MBPS");
-        firstCatalog.setPrice(new BigDecimal(299));
-        firstCatalog.setCurrency("TL");
 
         secondCatalog.setId(2L);
-        secondCatalog.setName("YAVAS");
-        secondCatalog.setSpeed(8);
-        secondCatalog.setUnit("MBPS");
-        secondCatalog.setPrice(new BigDecimal(99));
-        secondCatalog.setCurrency("TL");
 
         List<Catalog> catalogList = new ArrayList<>();
         catalogList.add(firstCatalog);
         catalogList.add(secondCatalog);
 
         CatalogResponse firstCatalogResponse = new CatalogResponse();
-        firstCatalogResponse.setName("HIZLI");
-        firstCatalogResponse.setSpeed(100);
-        firstCatalogResponse.setUnit("MBPS");
-        firstCatalogResponse.setPrice(new BigDecimal(299));
-        firstCatalogResponse.setCurrency("TL");
+        firstCatalogResponse.setId(1L);
 
         CatalogResponse secondCatalogResponse = new CatalogResponse();
-        secondCatalogResponse.setName("YAVAS");
-        secondCatalogResponse.setSpeed(8);
-        secondCatalogResponse.setUnit("MBPS");
-        secondCatalogResponse.setPrice(new BigDecimal(99));
-        secondCatalogResponse.setCurrency("TL");
+        secondCatalogResponse.setId(1L);
 
         List<CatalogResponse> catalogResponses = new ArrayList<>();
         catalogResponses.add(firstCatalogResponse);
@@ -79,7 +61,7 @@ public class CatalogServiceImplTest {
         getAllCatalogResponse.getCatalogResponse();
 
         //when
-        when(catalogRepository.findAll()).thenReturn(catalogList);
+        when(catalogRepository.findAllBy()).thenReturn(java.util.Optional.of(catalogList));
         when(catalogMapper.catalogToCatalogResponseSoap(firstCatalog)).thenReturn(firstCatalogResponse);
 
         //then

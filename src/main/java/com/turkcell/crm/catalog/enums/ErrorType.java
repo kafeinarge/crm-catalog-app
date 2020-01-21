@@ -1,8 +1,7 @@
 package com.turkcell.crm.catalog.enums;
 
 public enum ErrorType {
-    SUCCESS("200", "success"),
-    SERVICE_ERROR("460", "service fail");
+    SERVICE_NOT_FOUND("404", "ERROR");
 
     private String resultCode;
     private String resultMessage;
