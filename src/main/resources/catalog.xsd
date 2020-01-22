@@ -21,10 +21,7 @@
     <xs:sequence>
         <xs:element name="id" type="xs:long"/>
         <xs:element name="name" type="xs:string"/>
-        <xs:element name="speed" type="xs:int"/>
         <xs:element name="price" type="xs:decimal"/>
-        <xs:element name="currency" type="xs:string"/>
-        <xs:element name="unit" type="xs:string"/>
     </xs:sequence>
 </xs:complexType>
 

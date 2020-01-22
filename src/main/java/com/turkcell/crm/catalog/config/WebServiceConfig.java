@@ -27,14 +27,14 @@ public class WebServiceConfig extends WsConfigurerAdapter {
         MessageDispatcherServlet servlet = new MessageDispatcherServlet();
         servlet.setApplicationContext(applicationContext);
         servlet.setTransformWsdlLocations(true);
-        return new ServletRegistrationBean(servlet, "/ws/*");
+        return new ServletRegistrationBean(servlet, "/catalog/ws/*");
     }
 
     @Bean(name = "catalogs")
     public DefaultWsdl11Definition defaultWsdl11Definition(XsdSchema catalogSchema) {
         DefaultWsdl11Definition wsdl11Definition = new DefaultWsdl11Definition();
         wsdl11Definition.setPortTypeName("CatalogPort");
-        wsdl11Definition.setLocationUri("/ws");
+        wsdl11Definition.setLocationUri("/catalog/ws");
         wsdl11Definition.setTargetNamespace("http://www.turkcell.com/crm/catalog/soap");
         wsdl11Definition.setSchema(catalogSchema);
         return wsdl11Definition;
