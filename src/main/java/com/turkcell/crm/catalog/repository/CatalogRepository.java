@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Repository
-public interface ICatalogRepository extends BaseRepository<Catalog,Long> {
+public interface CatalogRepository extends BaseRepository<Catalog,Long> {
 
     Optional<List<Catalog>> findAllBy();
 }

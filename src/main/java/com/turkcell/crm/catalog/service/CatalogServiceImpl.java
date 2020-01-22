@@ -4,7 +4,7 @@ import com.turkcell.crm.catalog.entity.Catalog;
 import com.turkcell.crm.catalog.enums.ErrorType;
 import com.turkcell.crm.catalog.exception.ServiceFaultException;
 import com.turkcell.crm.catalog.mapper.CatalogMapper;
-import com.turkcell.crm.catalog.repository.ICatalogRepository;
+import com.turkcell.crm.catalog.repository.CatalogRepository;
 import com.turkcell.crm.catalog.service.base.CatalogService;
 import com.turkcell.crm.catalog.soap.GetAllCatalogResponse;
 import com.turkcell.crm.catalog.soap.ResponseMessage;
@@ -18,7 +18,7 @@ import java.util.List;
 public class CatalogServiceImpl implements CatalogService {
 
     @Autowired
-    private ICatalogRepository catalogRepository;
+    private CatalogRepository catalogRepository;
 
     @Autowired
     CatalogMapper catalogMapper;

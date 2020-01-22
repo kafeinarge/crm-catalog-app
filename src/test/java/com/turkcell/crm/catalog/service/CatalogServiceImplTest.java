@@ -2,7 +2,7 @@ package com.turkcell.crm.catalog.service;
 
 import com.turkcell.crm.catalog.entity.Catalog;
 import com.turkcell.crm.catalog.mapper.CatalogMapper;
-import com.turkcell.crm.catalog.repository.ICatalogRepository;
+import com.turkcell.crm.catalog.repository.CatalogRepository;
 import com.turkcell.crm.catalog.soap.CatalogResponse;
 import com.turkcell.crm.catalog.soap.GetAllCatalogResponse;
 import org.junit.Assert;
@@ -12,7 +12,6 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,7 +23,7 @@ public class CatalogServiceImplTest {
     private CatalogServiceImpl catalogService;
 
     @Mock
-    private ICatalogRepository catalogRepository;
+    private CatalogRepository catalogRepository;
 
     @Mock
     private CatalogMapper catalogMapper;
@@ -67,8 +66,5 @@ public class CatalogServiceImplTest {
         //then
         Assert.assertEquals(catalogMapper.catalogListToCatalogListResponseSoap(catalogList,getAllCatalogResponse), catalogService.getCatalogs());
     }
-
-
-
 
 }
